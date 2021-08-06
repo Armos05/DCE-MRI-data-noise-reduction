@@ -1,4 +1,5 @@
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Variation in C_t values with changes in parameters:
 
@@ -228,10 +229,19 @@ end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% 5 curve average of Tsmoothie and Wavelet Denoised to further reduce noise
-	
+
+ Tsmoothie_10_n_avg = movmean(At10,5,2);
+ Tsmoothie_20_n_avg = movmean(At20,5,2);
+ Tsmoothie_30_n_avg = movmean(At30,5,2);
+ Tsmoothie_35_n_avg = movmean(At35,5,2);
+ Tsmoothie_40_n_avg = movmean(At40,5,2);
+ Tsmoothie_50_n_avg = movmean(At50,5,2);
+ 
+ 	
 
 %% Fitting Parameters in our Denoised Curves:
- p_Denoise_10 = zeros(3,100);
+
+p_Denoise_10 = zeros(3,100);
  p_Denoise_20 = zeros(3,100);
 p_Denoise_30 = zeros(3,100);
  p_Denoise_35 = zeros(3,100);
@@ -418,3 +428,109 @@ title('Impact on v_{p} at 50% Noise');
 xlabel('Instances'); 
 ylabel('v_{p} value'); 
 saveas(gcf,'Variation vp 50% noise.png')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Final plot to show the error ranges:
+
+% 10% Noise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1022199	,0.9305037,	0.0106265],T), 'red' ,T, ctfun_ori_RD([0.097780 , 0.8694963	,0.0093735],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 10% Noise');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 10% noise.png')
+
+
+% 20% Noise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1046097,0.9629046,0.01115059],T), 'red' ,T, ctfun_ori_RD([0.0953903,0.8370954,0.00884941],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 20% Noise');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 20% noise.png')
+
+% 30% Noise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1064771,0.9877725,0.01157274
+],T), 'red' ,T, ctfun_ori_RD([0.0935229,0.8122275,0.00842726],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 30% Noise');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 30% noise.png')
+
+% 35% Noise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1079464,1.0094481,0.01225892],T), 'red' ,T, ctfun_ori_RD([0.0920536,0.7905519,0.00774108],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 35% Noise');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 35% noise.png')
+
+% 40% Noise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1100174,1.0338579,0.01244479
+],T), 'red' ,T, ctfun_ori_RD([0.0899826,0.7661421,0.00755521
+],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 40% Noise');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 40% noise.png')
+
+% 50% Noise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1123303,1.0603161,	0.012662887],T), 'red' ,T, ctfun_ori_RD([0.0876697,0.7396839,0.007337113],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 50% Noise');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 50% noise.png')
+
+
+
+% 10% Denoise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1009651,	0.913167,	0.01038271],T), 'red' ,T, ctfun_ori_RD([0.0990349,0.886833,0.00961729],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 10% Denoised');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 10% Denoised.png')
+
+% 20% Denoise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1020648,0.9287343,0.01053267],T), 'red' ,T, ctfun_ori_RD([0.0979352,0.8712657,0.00946733],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 20% Denoised');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 20% Denoised.png')
+
+
+% 30% Denoise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.10305545	,0.9409374,0.0107976],T), 'red' ,T, ctfun_ori_RD([0.09694455,0.8590626,0.00920233],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 30% Denoised');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 30% Denoised.png')
+
+% 35% Denoise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1036485,0.95047812,0.01112325],T), 'red' ,T, ctfun_ori_RD([0.0963515,0.84952188,0.00887675],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 35% Denoised');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 35% Denoised.png')
+
+% 40% Denoise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.10537621,0.9779814,0.01113166],T), 'red' ,T, ctfun_ori_RD([0.09462379,0.8220186,0.00886834],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 40% Denoised');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 40% Denoised.png')
+
+% 50% Denoise
+figure, plot(T, Ct, 'blue', T, ctfun_ori_RD([0.1057725,0.9776295,0.01138891],T), 'red' ,T, ctfun_ori_RD([0.0942275,0.8223705,0.00861109],T),'red')
+legend('True C_t', 'Upper bound', 'Lower Bound');
+title('Error Ranges on  C_{t}  curve at 50% Denoised');
+xlabel('Time intervals'); 
+ylabel('C{t} value'); 
+saveas(gcf,'Error Ranges in 50% Denoised.png')
