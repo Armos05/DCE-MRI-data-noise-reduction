@@ -507,3 +507,144 @@ def DRRN_denoising():
     model.add(Dense(1, activation='linear'))
 
     return model
+
+def LSTM_denoising():
+    # Implementation of LSTM approach presented in
+    # Deep Learning Models for Denoising ECG Signals Corneliu T.C. Arsene, Richard Hankins, Hujun Yin
+    # https://ieeexplore.ieee.org/document/8902833
+
+    model = Sequential()
+    model.add(LSTM(140, input_shape=(512, 1), return_sequences=True))
+    model.add(Dense(140, activation='relu'))
+    model.add(LSTM(140, return_sequences=True)) #Check for errors
+    model.add(Dense(140, activation='relu'))
+    model.add(Dense(1, activation='linear'))
+
+    return model
+
+def CNN_Denoising():
+    # Implementation of CNN denoising approach presented in
+    # Deep Learning Models for Denoising ECG Signals Corneliu T.C. Arsene, Richard Hankins, Hujun Yin
+    # https://ieeexplore.ieee.org/document/8902833
+    
+    model = Sequential()
+
+  model.add(Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same"))
+  model.add(BatchNormalization)
+  model.add(layers.Activation(activations.relu))
+  model.add(AvgPool1D(pool_size=2, strides=4, padding="same"))
+
+  model.add(Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same"))
+  model.add(BatchNormalization)
+  model.add(layers.Activation(activations.relu))
+  model.add(AvgPool1D(pool_size=2, strides=4, padding="same"))
+
+  model.add(Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same"))
+  model.add(BatchNormalization)
+  model.add(layers.Activation(activations.relu))
+  model.add(AvgPool1D(pool_size=2, strides=4, padding="same"))
+
+  model.add(Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same"))
+  model.add(BatchNormalization)
+  model.add(layers.Activation(activations.relu))
+  model.add(AvgPool1D(pool_size=2, strides=4, padding="same"))
+
+  model.add(Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same"))
+  model.add(BatchNormalization)
+  model.add(layers.Activation(activations.relu))
+  model.add(AvgPool1D(pool_size=2, strides=4, padding="same"))
+
+  model.add(Dense(512, activation='linear'))
+        return model
+
+
+def CNN_encoder_decoder():
+    # Implementation of CNN autoencoder for denoising approach presented in
+    # End-to-End Trained CNN Encoder-Decoder Network for Fetal ECG Signal Denoising
+    # https://iopscience.iop.org/article/10.1088/1361-6579/ab69b9/meta
+    # https://github.com/rshnn/xray-denoising
+
+
+    input_shape = (512,1)
+    input = Input(shape = input_shape)
+
+    x = Conv1D(filters=64, kernel_size=4, padding='same', kernel_initializer=glorot_uniform(seed=0))(input)
+    leaky_relu = LeakyReLU(alpha=0.01)
+    x = Activation(leaky_relu)(x) 
+    
+    shortcut_1 = x
+
+    x = Conv1D(filters=128, kernel_size=4, padding='same', kernel_initializer=glorot_uniform(seed=0))(input)
+    x = Activation(leaky_relu)(x) 
+    
+    shortcut_2 = x
+
+    x = Conv2D(filters=256, kernel_size=8, strides=2, padding='same', 
+               kernel_initializer=glorot_uniform(seed=0))(x)
+    x = Activation(leaky_relu)(x) 
+    
+    shortcut_3 = x 
+
+    x = Conv2D(filters=256, kernel_size=8, strides=2, padding='same', 
+               kernel_initializer=glorot_uniform(seed=0))(x)
+    x = Activation(leaky_relu)(x) 
+    
+    shortcut_4 = x 
+
+    x = Conv2D(filters= 512, kernel_size=8, strides=2, padding='same', 
+               kernel_initializer=glorot_uniform(seed=0))(x)
+    x = Activation(leaky_relu)(x) 
+
+    shortcut_5 = x 
+
+    x = Conv2D(filters=512, kernel_size=4 , strides=2, padding='same', 
+               kernel_initializer=glorot_uniform(seed=0))(x)
+    x = Activation(leaky_relu)(x) 
+
+    shortcut_6 = x    
+
+    x = Conv2D(filters=1024, kernel_size=8, strides=2, padding='same', 
+               kernel_initializer=glorot_uniform(seed=0))(x)
+    x = Activation(leaky_relu)(x) 
+
+    shortcut_7 = x 
+
+    x = Conv2D(filters=2048, kernel_size=4 strides=2, padding='same', 
+               kernel_initializer=glorot_uniform(seed=0))(x)
+    x = Activation(leaky_relu)(x) 
+
+
+    
+    ## Upsampling 
+    x = Conv1DTranspose(input_tensor = x, filters=2048, kernel_size=4, strides=2, padding='same')(x) 
+    x = Activation(leaky_relu)(x) 
+
+    x = Add()([x, shortcut_7]) 
+    x = Conv1DTranspose(input_tensor = x,filters=1024, kernel_size=8, strides=2, padding='same')(x)
+    x = Activation(leaky_relu)(x) 
+
+    x = Add()([x, shortcut_6]) 
+    x = Conv1DTranspose(input_tensor = x,filters=512, kernel_size=16, strides=2, padding='same')(x)
+    x = Activation(leaky_relu)(x) 
+
+    x = Add()([x, shortcut_5]) 
+    x = Conv1DTranspose(input_tensor = x, filters=512, kernel_size=16, strides=2, padding='same')(x)
+    x = Activation(leaky_relu)(x) 
+
+    x = Add()([x, shortcut_4])
+    x = Conv1DTranspose(input_tensor = x, filters=256, kernel_size=64, padding='same')(x)
+    x = Activation(leaky_relu)(x)   
+
+    x = Add()([x, shortcut_3]) 
+    x = Conv1DTranspose(input_tensor = x, filters=256, kernel_size=8, strides=2, padding='same')(x)
+    x = Activation(leaky_relu)(x) 
+
+    x = Add()([x, shortcut_2]) 
+    x = Conv1DTranspose(input_tensor = x, filters=128, kernel_size=16, strides=2, padding='same')(x)
+    x = Activation(leaky_relu)(x) 
+
+    x = Add()([x, shortcut_1]) 
+    predictions = Conv1DTranspose(input_tensor = x, filters=64, kernel_size=16, strides=2, padding='same', activation = 'relu')(x) 
+
+    model = Model(inputs=[input], outputs=predictions)
+    return model
