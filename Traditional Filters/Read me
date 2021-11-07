@@ -1,0 +1,6 @@
+This contains traditional time series filetring methods applied on 1D time series data (Concentration Curve). Denoising is applied on artifcially generated curves
+using the following methods:
+- Convolution smoothing
+- Wavelet Smoothing
+- Moving Averages
+- Exponential Smoothing
