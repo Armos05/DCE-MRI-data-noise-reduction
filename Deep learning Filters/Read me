@@ -2,8 +2,7 @@ This file contains the implementation of various filters including
 - Deep Recurrent Neural Networks for ECG Signal Denoising Karol Antczak
 - LSTM neural network Deep Learning Models for Denoising ECG Signals Corneliu T.C. Arsene, Richard Hankins, Hujun Yin
 - CNN model Deep Learning Models for Denoising ECG Signals Corneliu T.C. Arsene, Richard Hankins, Hujun Yin
-- Deep CNN Two-stage ECG signal denoising based on deep convolutional network  Lishen Qiu et al 2021 
-- Deep NN Seismic Signal Denoising and Decomposition Using Deep Neural Networks Weiqiang Zhu, S. Mostafa Mousavi and Gregory C. Beroza
+- Deep CNN Two-stage ECG signal denoising based on deep convolutional network  Lishen Qiu et al 2021 (will be added)
 - CNN Encoder Decoder End-to-End Trained CNN Encoder-Decoder Network for Fetal ECG Signal Denoising Eleni Fotiadou, Tomasz Konopczyński, Jürgen Hesser, and Rik Vullings
 - DeepFilter: an ECG baseline wander removal filter using deep learning techniques
 - Full Convolutional Net Denoinsing Autoencoders (FCN-DAE)  Hsin-Tien Chiang, Yi-Yen Hsieh, Szu-Wei Fu, Kuo-Hsuan Hung, Yu Tsao, and Shao-Yi Chien. Noise reduction in ecg signals using fully convolutional denoising autoencoders.IEEE Access, 7:60806–60813, 2019.
