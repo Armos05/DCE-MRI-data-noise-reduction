@@ -4,3 +4,5 @@ using the following methods:
 - Wavelet Smoothing
 - Moving Averages
 - Exponential Smoothing
+- FIR filters
+- IIR filters
