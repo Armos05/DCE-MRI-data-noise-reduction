@@ -522,39 +522,39 @@ def LSTM_denoising():
 
     return model
     
-def CNN_Denoising():
+    def CNN_Denoising():
     # Implementation of CNN denoising approach presented in
     # Deep Learning Models for Denoising ECG Signals Corneliu T.C. Arsene, Richard Hankins, Hujun Yin
     # https://ieeexplore.ieee.org/document/8902833
     
   input_shape = (512,1)
   input = Input(shape = input_shape)
+  
 
-  x = Conv1D(filters=36, kernel_size=19, activation='relu',stride = 1, input_shape=(512,1), padding = "same")(input)
+  x = Conv1D(filters=36, input_shape=(512,1), kernel_size=19, activation='relu',strides = 1, padding = "same")(input)
   x = BatchNormalization()(x)
   leaky_relu = LeakyReLU(alpha=0.01)
   x = Activation(leaky_relu)(x)
-  x = AvgPool1D(pool_size=2, strides=4, padding="same")(x) #128
+  x = AvgPool1D(pool_size=2, strides=4, padding="same")(x) #128,36
   
   x = Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same")(x)
   x = BatchNormalization()(x)
   leaky_relu = LeakyReLU(alpha=0.01)
   x = Activation(leaky_relu)(x)
-  x = AvgPool1D(pool_size=2, strides=4, padding="same")(x) #32
+  x = AvgPool1D(pool_size=2, strides=4, padding="same")(x) #32,36
 
   x = Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same")(x)
   x = BatchNormalization()(x)
   leaky_relu = LeakyReLU(alpha=0.01)
   x = Activation(leaky_relu)(x)
-  x = AvgPool1D(pool_size=2, strides=4, padding="same")(x) #8
+  x = AvgPool1D(pool_size=2, strides=4, padding="same")(x) #8,36
 
-  x = Conv1D(filters=36, kernel_size=19, activation='relu', input_shape=(512,1), padding = "same")(x)
-  x = BatchNormalization()(x)
-  leaky_relu = LeakyReLU(alpha=0.01)
-  x = Activation(leaky_relu)(x)
-  x = AvgPool1D(pool_size=2, strides=4, padding="same")(x) #2
+  x= Flatten()(x) #288
+
+  predictions = Dense(512, activation='linear')(x) # 512
+
+  predictions = Lambda(lambda i: K.expand_dims(i, axis=2))(predictions)
   
-  predictions = Dense(512, activation='linear')
   model = Model(inputs=[input], outputs=predictions)
 
   return model
