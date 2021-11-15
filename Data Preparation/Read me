@@ -1,4 +1,5 @@
 How to generate Ct curve for DCE MRI
 
-First load the Matlab function files for generating artificial data. 
-Then load the python files to preprocess and reshape the data for our use.
+First load the Matlab function files to define functions and variables to generate artificial data. 
+Then load the Generating Data module (MATLAB) to generate artifiial data.
+Finally load the python file to preprocess and reshape the data for our use.
