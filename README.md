@@ -2,6 +2,7 @@
 ![Python 3.7](https://img.shields.io/badge/python-3.7-green.svg)
 ![PyTorch 1.3](https://img.shields.io/badge/pytorch-1.3-green.svg)
 
+
 While recording MR signals, due to the random fluctuations the signals get noisy. Some of the attributed reasons can be electric fluctiations, muscle movement etc. This is project on how to reduce those noise so as to keep the signals intact, which would then help in better parameter estimation.
 This project utlizes semi-synthetic DCE-MRI time series signals, and test the state of the art deep learning denoising approaches on them.
 Some of the Models trained are:
@@ -98,5 +99,15 @@ COS SIM is the cosine similarity
 ```
 ![image](https://user-images.githubusercontent.com/40626584/142758732-3f517252-75e5-48a8-af8f-cb9ade47627c.png)
 
+## Box-plot distribution of errors
+### SSD
+![image](https://user-images.githubusercontent.com/40626584/142758812-33199a39-3c7c-40a6-8128-b60c6fef476b.png)
+### MAD
+![image](https://user-images.githubusercontent.com/40626584/142758821-158bea5c-64ea-4f6e-9cd2-0c263fcb3c55.png)
+### PRD
+![image](https://user-images.githubusercontent.com/40626584/142758838-e0db5cc9-5ec3-4168-9524-08b35b44d62a.png)
+### COS SIM
+![image](https://user-images.githubusercontent.com/40626584/142758849-2994ddaa-9a49-4ca6-9a3d-86b1c84ffeec.png)
 
+stay tuned!!
 
