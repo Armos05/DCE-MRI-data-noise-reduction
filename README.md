@@ -87,7 +87,7 @@ Some of the Models trained are:
 ```
 in secs
 ![image](https://user-images.githubusercontent.com/40626584/142758746-a9a84e26-e38d-4321-8d3c-c09070d341f6.png)
-
+```
 
 # Tabular Summary
 ```
@@ -95,7 +95,7 @@ SSD is Sum of Square Errors
 MAD is Mean Absolute Difference
 PRD is Percent Roor Mean Square Difference
 COS SIM is the cosine similarity
-
+```
 ![image](https://user-images.githubusercontent.com/40626584/142758732-3f517252-75e5-48a8-af8f-cb9ade47627c.png)
 
 
