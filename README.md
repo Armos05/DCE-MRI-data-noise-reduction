@@ -53,34 +53,50 @@ Some of the Models trained are:
 - ---
 ![image](https://user-images.githubusercontent.com/40626584/142758388-813ab8ed-543b-425c-8285-70c85ec0141c.png)
 
-#Denoised Signals
+# Denoised Signals
 1. DRNN
 ---
-![image](https://user-images.githubusercontent.com/40626584/142758469-7cd7cc82-f38f-4f36-bdb5-95f4cb6d18bd.png)
+![image](https://user-images.githubusercontent.com/40626584/142758723-b946d541-de96-4072-82b7-d145b904c5e4.png)
 
 2. LSTM
 ---
-![image](https://user-images.githubusercontent.com/40626584/142758488-df3e3122-5b47-4a3a-867b-8b8836c5d16a.png)
+![image](https://user-images.githubusercontent.com/40626584/142758707-4ea3da42-b9a9-4514-819c-af916ffa6897.png)
 
 3. Denoising CNN
 ---
-![image](https://user-images.githubusercontent.com/40626584/142758507-30606dad-333c-47ba-bed1-a42e4adfb07c.png)
+![image](https://user-images.githubusercontent.com/40626584/142758697-cd331fb8-e022-4a71-801d-e48aff17b46a.png)
 
 4. FCN DAE
 ---
-![image](https://user-images.githubusercontent.com/40626584/142758520-a6b216af-2e12-483e-85ad-1ce2267a7f47.png)
+![image](https://user-images.githubusercontent.com/40626584/142758693-bf13b5b9-e228-4e9b-af63-f4631cba9d14.png)
 
 5. Vanilla Nl
 ---
-![image](https://user-images.githubusercontent.com/40626584/142758526-4aefa59c-5c5a-43d0-992e-c63defc47df7.png)
+![image](https://user-images.githubusercontent.com/40626584/142758679-bc066dd0-112e-478d-8d43-084000e186cf.png)
+
 
 6. DEEP Filter
 ---
-![image](https://user-images.githubusercontent.com/40626584/142758545-7bd00396-559c-4ace-9bf3-c0759871ea80.png)
+![image](https://user-images.githubusercontent.com/40626584/142758668-68ba21f0-06f5-4e88-abb7-33de983d4994.png)
 
 7. Res CNN
 ---
-![image](https://user-images.githubusercontent.com/40626584/142758553-d664cd0f-e208-417c-9314-cefc32ca4701.png)
+![image](https://user-images.githubusercontent.com/40626584/142758658-016f0f3b-46ca-42b2-b36c-a5d92cae0e20.png)
+
+# Training Time
+```
+in secs
+![image](https://user-images.githubusercontent.com/40626584/142758746-a9a84e26-e38d-4321-8d3c-c09070d341f6.png)
+
+
+# Tabular Summary
+```
+SSD is Sum of Square Errors
+MAD is Mean Absolute Difference
+PRD is Percent Roor Mean Square Difference
+COS SIM is the cosine similarity
+
+![image](https://user-images.githubusercontent.com/40626584/142758732-3f517252-75e5-48a8-af8f-cb9ade47627c.png)
 
 
 
