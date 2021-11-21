@@ -86,8 +86,8 @@ Some of the Models trained are:
 # Training Time
 ```
 in secs
-![image](https://user-images.githubusercontent.com/40626584/142758746-a9a84e26-e38d-4321-8d3c-c09070d341f6.png)
 ```
+![image](https://user-images.githubusercontent.com/40626584/142758746-a9a84e26-e38d-4321-8d3c-c09070d341f6.png)
 
 # Tabular Summary
 ```
