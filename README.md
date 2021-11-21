@@ -8,7 +8,8 @@ Some of the Models trained are:
 
 1. ### Deep Recurrent Neural Network
  (Antczak, K. (2018). Deep recurrent neural networks for ECG signal denoising, arXiv preprint arXiv:1807.11551)
- - Model architecture
+- Model architecture
+- ---
 ![image](https://user-images.githubusercontent.com/40626584/142758299-abeeda53-9029-4e1c-aa71-38df030622e0.png)
 
 
